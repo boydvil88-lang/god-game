@@ -7,7 +7,7 @@ import telebot
 from telebot import types
 
 # توکن ربات خود را از BotFather بگیرید و اینجا قرار دهید
-TOKEN = os.getenv("BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
+TOKEN = os.getenv("BOT_TOKEN", "9212021033:AAEcs7YybLq2dmCMKO7qYMQIWrB7UZ37WQQ")
 # آدرس مینی‌اپ شما روی گیت‌هاب پیجز (مثلا https://yourusername.github.io/grand-board)
 WEBAPP_URL = os.getenv("WEBAPP_URL", "https://yourusername.github.io/grand-board")
 
