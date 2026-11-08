@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>GRAND BOARD — Your Private Game Club</title>
+
+  <!-- Telegram WebApp SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <!-- Google Fonts: Cinzel (Luxury Serif) & Plus Jakarta Sans (Clean UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js (3D Dice & Visuals) & Chess.js (Official Chess Engine Rules) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Ambient Cinematic Lighting Overlay -->
+  <div class="ambient-spotlight"></div>
+
+  <!-- App Container -->
+  <div id="app" class="app-shell">
+    
+    <!-- Top Luxury Header -->
+    <header class="top-bar">
+      <div class="user-chip" id="header-profile-btn">
+        <div class="avatar-ring">
+          <img id="user-avatar" src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=GrandMaster" alt="Avatar" />
+          <span class="level-badge" id="user-level-badge">1</span>
+        </div>
+        <div class="user-meta">
+          <span class="club-tag">VIP MEMBER</span>
+          <h2 id="user-name">Grand Player</h2>
+        </div>
+      </div>
+
+      <div class="brand-emblem">
+        <span class="brand-title">GRAND BOARD</span>
+        <span class="brand-sub">PRIVATE CLUB</span>
+      </div>
+
+      <button class="icon-btn" id="quick-mute-btn" aria-label="Toggle Audio">
+        <span id="mute-icon">🔊</span>
+      </button>
+    </header>
+
+    <!-- Dynamic Viewport -->
+    <main id="main-view" class="viewport"></main>
+
+    <!-- Active Game Modal Container (Used in Stages 2-6) -->
+    <div id="game-stage-container" class="game-stage hidden"></div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="nav-item active" data-tab="home">
+        <span class="nav-icon">🏛️</span>
+        <span class="nav-label">Lounge</span>
+      </button>
+      <button class="nav-item" data-tab="collection">
+        <span class="nav-icon">♟️</span>
+        <span class="nav-label">Games</span>
+      </button>
+      <button class="nav-item" data-tab="ai">
+        <span class="nav-icon">🎩</span>
+        <span class="nav-label">Masters</span>
+      </button>
+      <button class="nav-item" data-tab="challenges">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-label">Challenges</span>
+      </button>
+      <button class="nav-item" data-tab="stats">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Profile</span>
+      </button>
+      <button class="nav-item" data-tab="settings">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Settings</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- Core Application Logic -->
+  <script type="module" src="app.js"></script>
+  <!-- Core Application Logic -->
+  <script type="module" src="app.js"></script>
+  <!-- Stage 2: Shared 3D Dice & Animation Engine -->
+  <script type="module" src="shared-engine.js"></script>
+  <!-- Core Application Logic -->
+  <script type="module" src="app.js"></script>
+  <!-- Stage 2: Shared 3D Dice & Animation Engine -->
+  <script type="module" src="shared-engine.js"></script>
+  <!-- Stage 3: Complete Luxury Chess Engine -->
+  <script type="module" src="chess-game.js"></script>
+  <!-- Core Application Logic -->
+  <script type="module" src="app.js"></script>
+  <!-- Stage 2: Shared 3D Dice & Animation Engine -->
+  <script type="module" src="shared-engine.js"></script>
+  <!-- Stage 3: Complete Luxury Chess Engine -->
+  <script type="module" src="chess-game.js"></script>
+  <!-- Stage 4: Complete Luxury Backgammon Engine -->
+  <script type="module" src="backgammon-game.js"></script>
+  <!-- Core Application Logic -->
+  <script type="module" src="app.js"></script>
+  <!-- Stage 2: Shared 3D Dice & Animation Engine -->
+  <script type="module" src="shared-engine.js"></script>
+  <!-- Stage 3: Complete Luxury Chess Engine -->
+  <script type="module" src="chess-game.js"></script>
+  <!-- Stage 4: Complete Luxury Backgammon Engine -->
+  <script type="module" src="backgammon-game.js"></script>
+  <!-- Stage 5: Complete 4-Player Royal Ludo Engine -->
+  <script type="module" src="ludo-game.js"></script>
+  <script type="module" src="app.js"></script>
+  <script type="module" src="shared-engine.js"></script>
+  <script type="module" src="chess-game.js"></script>
+  <script type="module" src="backgammon-game.js"></script>
+  <script type="module" src="ludo-game.js"></script>
+  <!-- Stage 6: Domino, Checkers & Atelier Skins -->
+  <script type="module" src="priority2-games.js"></script>
+</body>
+</html>

@@ -1,0 +1,1441 @@
+:root {
+  /* Exact Prompt Color Palette */
+  --bg-obsidian: #090B10;
+  --surface-marble: #151923;
+  --surface-secondary: #202633;
+  --gold-primary: #C6A66A;
+  --gold-secondary: #D9C59B;
+  --text-ivory: #F5F1E8;
+  --text-muted: #9299A6;
+  --emerald-success: #3C9974;
+  --crimson-danger: #C64D50;
+
+  /* Luxury Material Gradients & Borders */
+  --wood-walnut: linear-gradient(145deg, #241711 0%, #160d09 100%);
+  --velvet-emerald: radial-gradient(circle at 50% 30%, #173f30 0%, #0b2219 100%);
+  --marble-card: linear-gradient(160deg, rgba(32, 38, 51, 0.88) 0%, rgba(21, 25, 35, 0.96) 100%);
+  --brushed-gold: linear-gradient(135deg, #d9c59b 0%, #c6a66a 50%, #9e7f47 100%);
+  --gold-border: 1px solid rgba(198, 166, 106, 0.24);
+  --gold-border-strong: 1px solid rgba(198, 166, 106, 0.55);
+
+  /* Shadows & Transitions */
+  --shadow-elevation: 0 14px 34px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Fonts */
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Safe Areas */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-obsidian);
+  color: var(--text-ivory);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle Cinematic Lighting */
+.ambient-spotlight {
+  position: fixed;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120vw;
+  height: 55vh;
+  background: radial-gradient(circle, rgba(198, 166, 106, 0.08) 0%, rgba(9, 11, 16, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  max-width: 540px;
+  margin: 0 auto;
+  background: radial-gradient(circle at top, #121620 0%, var(--bg-obsidian) 75%);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+}
+
+/* Top Bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(15, 18, 26, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: var(--gold-border);
+  flex-shrink: 0;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.avatar-ring {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 2px;
+  background: var(--brushed-gold);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.avatar-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--surface-marble);
+}
+
+.level-badge {
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  background: var(--bg-obsidian);
+  color: var(--gold-primary);
+  border: 1px solid var(--gold-primary);
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-meta .club-tag {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  color: var(--gold-primary);
+  font-weight: 700;
+  display: block;
+}
+
+.user-meta h2 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-ivory);
+  max-width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-emblem {
+  text-align: center;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: var(--brushed-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+.brand-sub {
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  color: var(--text-muted);
+  display: block;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--surface-marble);
+  border: var(--gold-border);
+  color: var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-luxury), border-color 0.2s;
+}
+
+.icon-btn:active {
+  transform: scale(0.93);
+}
+
+/* Main Scrollable Viewport */
+.viewport {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-behavior: smooth;
+}
+
+.viewport::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--gold-secondary);
+}
+
+.section-link {
+  font-size: 11px;
+  color: var(--gold-primary);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Luxury Cards */
+.luxury-card {
+  background: var(--marble-card);
+  border: var(--gold-border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow-elevation);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s var(--ease-luxury), border-color 0.25s;
+}
+
+.luxury-card:active {
+  transform: scale(0.985);
+}
+
+.velvet-banner {
+  background: var(--velvet-emerald);
+  border: var(--gold-border-strong);
+}
+
+.walnut-card {
+  background: var(--wood-walnut);
+  border: var(--gold-border);
+}
+
+/* Continue Playing Card */
+.continue-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.continue-info .badge-pill {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(198, 166, 106, 0.16);
+  border: 1px solid rgba(198, 166, 106, 0.35);
+  color: var(--gold-secondary);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+.continue-info h3 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--text-ivory);
+  margin-bottom: 4px;
+}
+
+.continue-info p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Gold Buttons */
+.btn-gold {
+  background: var(--brushed-gold);
+  color: #090B10;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(198, 166, 106, 0.25);
+  transition: transform 0.2s var(--ease-luxury), filter 0.2s;
+  white-space: nowrap;
+}
+
+.btn-gold:active {
+  transform: scale(0.95);
+  filter: brightness(0.92);
+}
+
+.btn-outline {
+  background: rgba(21, 25, 35, 0.7);
+  color: var(--gold-secondary);
+  border: var(--gold-border-strong);
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Horizontal Game Carousel */
+.carousel-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-row::-webkit-scrollbar {
+  height: 0px;
+}
+
+.game-tile {
+  min-width: 152px;
+  scroll-snap-align: start;
+  background: var(--marble-card);
+  border: var(--gold-border);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: var(--shadow-elevation);
+}
+
+.game-tile.priority-1 {
+  border-color: rgba(198, 166, 106, 0.45);
+}
+
+.game-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--surface-secondary);
+  border: var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.game-tile h4 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--text-ivory);
+  margin-bottom: 2px;
+}
+
+.game-tile p {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.priority-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+}
+
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.stat-box {
+  background: var(--surface-secondary);
+  border: var(--gold-border);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold-secondary);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* AI Opponent Cards */
+.ai-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ai-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--surface-secondary);
+  border: var(--gold-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+/* Settings Controls */
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+}
+
+.range-slider {
+  accent-color: var(--gold-primary);
+  width: 120px;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background: rgba(15, 18, 26, 0.95);
+  backdrop-filter: blur(14px);
+  border-top: var(--gold-border);
+  padding: 6px 4px;
+  flex-shrink: 0;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-item.active {
+  color: var(--gold-primary);
+  background: rgba(198, 166, 106, 0.1);
+}
+
+.nav-icon {
+  font-size: 17px;
+}
+
+.nav-label {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Active Game Fullscreen Overlay */
+.game-stage {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-obsidian);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================
+   STAGE 2: Shared 3D Dice Tray & Table UI
+   ========================================== */
+
+.table-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(15, 18, 26, 0.95);
+  border-bottom: var(--gold-border);
+  flex-shrink: 0;
+}
+
+.table-title-block {
+  text-align: center;
+}
+
+.ai-opponent-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: var(--surface-secondary);
+  border: var(--gold-border);
+  cursor: pointer;
+}
+
+.ai-opponent-pill strong {
+  display: block;
+  font-size: 11px;
+  color: var(--text-ivory);
+}
+
+.ai-opponent-pill small {
+  display: block;
+  font-size: 9px;
+  color: var(--gold-primary);
+}
+
+.ai-dialogue-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(21, 25, 35, 0.9);
+  border-bottom: 1px solid rgba(198, 166, 106, 0.14);
+  font-size: 12px;
+  color: var(--gold-secondary);
+  font-style: italic;
+  flex-shrink: 0;
+}
+
+.game-board-mount {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 12px;
+  overflow-y: auto;
+}
+
+/* Shared 3D Dice Tray */
+.shared-dice-tray {
+  position: relative;
+  width: 100%;
+  height: 128px;
+  border-radius: 14px;
+  background: radial-gradient(circle at center, #14382a 0%, #091b14 100%);
+  border: 2px solid rgba(198, 166, 106, 0.45);
+  box-shadow: inset 0 8px 22px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cup-shaking {
+  animation: luxuryCupShake 0.25s infinite ease-in-out;
+}
+
+@keyframes luxuryCupShake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-4px) rotate(-1.2deg); }
+  75% { transform: translateX(4px) rotate(1.2deg); }
+}
+
+.dice-celebration-toast {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--brushed-gold);
+  color: #090B10;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  animation: popInToast 0.3s var(--ease-luxury);
+  pointer-events: none;
+}
+
+@keyframes popInToast {
+  from { transform: translate(-50%, -12px) scale(0.8); opacity: 0; }
+  to { transform: translate(-50%, 0) scale(1); opacity: 1; }
+}
+
+/* Shared Floating Piece Interpolation */
+.floating-luxury-piece {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  font-size: 28px;
+  transform: translate(-50%, -50%) scale(1);
+  transition: left 0.24s var(--ease-luxury), top 0.24s var(--ease-luxury), transform 0.24s var(--ease-luxury);
+  filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.75));
+}
+
+.board-capture-shake {
+  animation: boardImpact 0.35s var(--ease-luxury);
+}
+
+.board-check-pulse {
+  box-shadow: 0 0 28px rgba(198, 77, 80, 0.75) !important;
+}
+
+@keyframes boardImpact {
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(0.985) translateY(2px); }
+}
+
+.showcase-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+/* ==========================================
+   STAGE 3: Luxury Chess Table & 3D Pieces
+   ========================================== */
+
+.chess-stage-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.chess-hud-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-marble);
+  border: var(--gold-border);
+  padding: 7px 12px;
+  border-radius: 12px;
+}
+
+.chess-player-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.chess-side-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-primary);
+}
+
+.white-dot { background: #F5F1E8; }
+.black-dot { background: #151923; }
+
+.chess-clock {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--bg-obsidian);
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chess-clock.active-clock {
+  color: var(--gold-primary);
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(198, 166, 106, 0.25);
+}
+
+/* Evaluation Analysis Bar */
+.chess-eval-bar-wrap {
+  position: relative;
+  height: 14px;
+  background: #181c26;
+  border-radius: 7px;
+  border: var(--gold-border);
+  overflow: hidden;
+}
+
+.chess-eval-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e5dac5 0%, #c6a66a 100%);
+  transition: width 0.35s var(--ease-luxury);
+}
+
+.chess-eval-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #090B10;
+  mix-blend-mode: screen;
+}
+
+/* Luxury Marble & Walnut Chess Board */
+.chess-board-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 360px;
+  margin: 0 auto;
+  padding: 8px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #241811 0%, #120b07 100%);
+  border: 2px solid rgba(198, 166, 106, 0.55);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85), inset 0 0 12px rgba(198, 166, 106, 0.2);
+}
+
+.chess-board-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(198, 166, 106, 0.4);
+}
+
+.chess-sq {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sq-light {
+  background: linear-gradient(135deg, #d7c7ad 0%, #c3b091 100%);
+}
+
+.sq-dark {
+  background: linear-gradient(135deg, #2b3242 0%, #1b202b 100%);
+}
+
+.sq-selected {
+  background: radial-gradient(circle, rgba(198, 166, 106, 0.85) 0%, rgba(198, 166, 106, 0.45) 100%) !important;
+}
+
+.sq-last-move {
+  box-shadow: inset 0 0 0 2px rgba(217, 197, 155, 0.65);
+}
+
+.sq-king-check {
+  background: radial-gradient(circle, #c64d50 0%, #6e1c1e 100%) !important;
+  animation: checkPulse 0.8s infinite alternate;
+}
+
+@keyframes checkPulse {
+  from { box-shadow: inset 0 0 6px #ff8a8d; }
+  to { box-shadow: inset 0 0 18px #ff8a8d; }
+}
+
+.sq-coord-rank {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  opacity: 0.65;
+  color: var(--gold-primary);
+}
+
+.sq-coord-file {
+  position: absolute;
+  bottom: 1px;
+  right: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  opacity: 0.65;
+  color: var(--gold-primary);
+}
+
+/* 3D Piece Styling */
+.chess-piece-3d {
+  font-size: clamp(22px, 6.2vw, 31px);
+  line-height: 1;
+  transition: transform 0.2s var(--ease-luxury);
+  z-index: 2;
+}
+
+.piece-ivory {
+  color: #FAF6EE;
+  text-shadow: 0 2px 0 #b8a686, 0 5px 8px rgba(0, 0, 0, 0.65);
+}
+
+.piece-obsidian {
+  color: #11151F;
+  text-shadow: 0 1px 0 #C6A66A, 0 5px 8px rgba(0, 0, 0, 0.8);
+}
+
+.piece-lifted {
+  transform: translateY(-5px) scale(1.18);
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.7));
+}
+
+.sq-legal-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(60, 153, 116, 0.85);
+  box-shadow: 0 0 8px rgba(60, 153, 116, 0.8);
+  z-index: 3;
+}
+
+.sq-capture-ring {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 3px solid rgba(198, 77, 80, 0.88);
+  z-index: 3;
+}
+
+/* Overlays for Promotion & Checkmate */
+.chess-overlay-modal {
+  position: absolute;
+  inset: 12px;
+  background: rgba(9, 11, 16, 0.94);
+  backdrop-filter: blur(10px);
+  border: var(--gold-border-strong);
+  border-radius: 12px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+}
+
+.promo-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--gold-secondary);
+  margin-bottom: 12px;
+}
+
+.promo-choices {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.promo-choices button {
+  background: var(--surface-secondary);
+  border: var(--gold-border);
+  border-radius: 10px;
+  padding: 10px 8px;
+  color: var(--text-ivory);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.promo-choices button span {
+  font-size: 10px;
+  color: var(--gold-primary);
+}
+
+.outcome-crown {
+  font-size: 42px;
+  margin-bottom: 6px;
+}
+
+/* History & Controls */
+.chess-history-strip {
+  background: rgba(15, 18, 26, 0.85);
+  border: var(--gold-border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow-x: auto;
+  color: var(--text-ivory);
+}
+
+.hist-pair {
+  margin-right: 10px;
+}
+
+.hist-pair b {
+  color: var(--gold-primary);
+}
+
+.chess-controls-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.chess-controls-bar button {
+  padding: 8px 4px;
+  font-size: 11px;
+}
+
+/* ==========================================
+   STAGE 4: Luxury Backgammon Cabinet & UI
+   ========================================== */
+
+.bg-stage-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.bg-hud-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-marble);
+  border: var(--gold-border);
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+.bg-score-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-ivory);
+}
+
+.checker-mini {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-primary);
+}
+.white-mini { background: #FAF6EE; }
+.black-mini { background: #141822; }
+
+.bg-cube-badge {
+  background: var(--brushed-gold);
+  color: #090B10;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Backgammon Wooden Cabinet */
+.bg-board-cabinet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(145deg, #21150F 0%, #120B07 100%);
+  border: 2px solid rgba(198, 166, 106, 0.55);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
+  flex: 1;
+  max-height: 360px;
+}
+
+.bg-half-row {
+  display: grid;
+  grid-template-columns: 1fr 34px 1fr;
+  height: 41%;
+  gap: 4px;
+}
+
+.bg-quadrant {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background: #131722;
+  border: 1px solid rgba(198, 166, 106, 0.25);
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.bg-point {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px 0;
+}
+
+.pt-top { justify-content: flex-start; }
+.pt-bot { justify-content: flex-end; }
+
+/* Subtle Luxury Triangle Wedge Background */
+.pt-even::before,
+.pt-odd::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  z-index: 0;
+  opacity: 0.72;
+}
+
+.pt-top::before {
+  clip-path: polygon(0 0, 100% 0, 50% 92%);
+}
+
+.pt-bot::before {
+  clip-path: polygon(50% 8%, 0 100%, 100% 100%);
+}
+
+.pt-even::before {
+  background: linear-gradient(180deg, #b89758 0%, #7d6230 100%);
+}
+
+.pt-odd::before {
+  background: linear-gradient(180deg, #283142 0%, #181e29 100%);
+}
+
+.pt-selected {
+  box-shadow: inset 0 0 0 2px var(--gold-primary);
+  background: rgba(198, 166, 106, 0.18);
+}
+
+.pt-target {
+  box-shadow: inset 0 0 0 2px var(--emerald-success);
+  background: rgba(60, 153, 116, 0.22);
+}
+
+.pt-num {
+  position: relative;
+  z-index: 2;
+  font-size: 8px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.pt-checker-stack {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.bg-checker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.chk-ivory {
+  background: radial-gradient(circle at 35% 35%, #FFFDF9 0%, #D8CBB3 100%);
+  color: #151923;
+  border: 1.5px solid #C6A66A;
+}
+
+.chk-obsidian {
+  background: radial-gradient(circle at 35% 35%, #2C3446 0%, #0E1118 100%);
+  color: #F5F1E8;
+  border: 1.5px solid #C6A66A;
+}
+
+/* Center Bar */
+.bg-center-bar {
+  background: #0d1017;
+  border: 1px solid rgba(198, 166, 106, 0.35);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.bar-label {
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: var(--gold-primary);
+}
+
+/* Mid Rail & Bear Off */
+.bg-mid-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px;
+  font-size: 11px;
+  color: var(--gold-secondary);
+}
+
+.bg-active-dice-Row {
+  display: flex;
+  gap: 6px;
+}
+
+.bg-die-chip {
+  background: rgba(198, 166, 106, 0.2);
+  border: 1px solid var(--gold-primary);
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.bg-bearoff-rail {
+  margin-top: 2px;
+}
+
+.bg-bearoff-btn {
+  width: 100%;
+  padding: 5px;
+  border-radius: 8px;
+  background: rgba(21, 25, 35, 0.85);
+  border: var(--gold-border);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bg-bearoff-btn.bearoff-ready {
+  background: rgba(60, 153, 116, 0.28);
+  border-color: var(--emerald-success);
+  color: #F5F1E8;
+  box-shadow: 0 0 12px rgba(60, 153, 116, 0.5);
+}
+
+/* Bottom 3D Dice Tray & Action Controls */
+.bg-dice-dock {
+  display: grid;
+  grid-template-columns: 1fr 115px;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.bg-compact-tray {
+  height: 102px !important;
+}
+
+.bg-action-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.bg-action-col button {
+  padding: 6px 8px;
+  font-size: 11px;
+  width: 100%;
+}
+
+/* ==========================================
+   STAGE 5: Luxury 4-Player Ludo Board & UI
+   ========================================== */
+
+.ludo-stage-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.ludo-hud-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.ludo-player-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: var(--surface-marble);
+  border: var(--gold-border);
+  opacity: 0.7;
+  transition: all 0.2s var(--ease-luxury);
+}
+
+.ludo-player-pill.active-turn {
+  opacity: 1;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(198, 166, 106, 0.3);
+}
+
+.ludo-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ludo-pill-meta strong {
+  display: block;
+  font-size: 11px;
+  color: var(--text-ivory);
+}
+
+.ludo-pill-meta small {
+  font-size: 9px;
+  color: var(--gold-secondary);
+}
+
+/* 15x15 Luxury Ludo Board */
+.ludo-board-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 345px;
+  margin: 0 auto;
+  padding: 6px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #211610 0%, #120B07 100%);
+  border: 2px solid rgba(198, 166, 106, 0.55);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
+}
+
+.ludo-grid-15 {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  background: #141822;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(198, 166, 106, 0.35);
+}
+
+.ludo-cell {
+  position: relative;
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yard-crimson { background: rgba(198, 77, 80, 0.22); }
+.yard-emerald { background: rgba(60, 153, 116, 0.22); }
+.yard-gold    { background: rgba(198, 166, 106, 0.25); }
+.yard-sapphire{ background: rgba(74, 120, 194, 0.22); }
+
+.stretch-crimson { background: rgba(198, 77, 80, 0.48); }
+.stretch-emerald { background: rgba(60, 153, 116, 0.48); }
+.stretch-gold    { background: rgba(198, 166, 106, 0.52); }
+.stretch-sapphire{ background: rgba(74, 120, 194, 0.48); }
+
+.ludo-center-crown {
+  background: radial-gradient(circle, #2a2112 0%, #120e08 100%);
+  border-color: rgba(198, 166, 106, 0.4);
+}
+
+.crown-emblem {
+  font-size: 14px;
+}
+
+.safe-star-mark {
+  font-size: 9px;
+  color: var(--gold-primary);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Ludo Tokens */
+.ludo-token {
+  width: 76%;
+  height: 76%;
+  border-radius: 50%;
+  border: 1.5px solid #FAF6EE;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.85);
+  z-index: 4;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tok-selectable {
+  animation: tokenPulseGold 0.75s infinite alternate;
+  box-shadow: 0 0 10px #FAF6EE, 0 0 16px var(--gold-primary);
+  transform: scale(1.18);
+  z-index: 6;
+}
+
+@keyframes tokenPulseGold {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1.28); }
+}
+
+.ludo-status-strip {
+  background: rgba(15, 18, 26, 0.9);
+  border: var(--gold-border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--gold-secondary);
+}
+
+/* ==========================================
+   STAGE 6: Domino, Checkers & Skins Styles
+   ========================================== */
+
+.domino-stage-wrap, .checkers-stage-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.domino-board-canvas {
+  flex: 1;
+  background: #131722;
+  border: var(--gold-border);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.domino-chain-row {
+  display: flex;
+  gap: 8px;
+}
+
+.domino-tile-chip {
+  background: var(--surface-secondary);
+  border: var(--gold-border);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--gold-secondary);
+}
+
+.domino-hand-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  width: 100%;
+  padding-bottom: 4px;
+}
+
+.domino-hand-tile {
+  background: var(--surface-marble);
+  border: var(--gold-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-ivory);
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.domino-hand-tile.active-hand {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 10px rgba(198, 166, 106, 0.3);
+}
+
+.checkers-board-grid {
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-height: 350px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  border: 2px solid rgba(198, 166, 106, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.checkers-sq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.checkers-piece {
+  font-size: 24px;
+  line-height: 1;
+}
